@@ -10,7 +10,7 @@
  (func $src/wasm/src/add/add (; 0 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $0
   local.get $1
-  i32.sub
+  i32.add
  )
  (func $null (; 1 ;) (type $FUNCSIG$v)
   nop
