@@ -1,6 +1,6 @@
 import loader from '../node_modules/assemblyscript/lib/loader';
 import { displayImage, getImgDataAsArray } from './utils/canvas.utils';
-import { editedImageWrapperEl } from './utils/html.utils';
+import { editedImageWrapperEl } from './utils/dom.utils';
 
 fetch('optimized.0778a663.wasm')
   .then(bytes => bytes.arrayBuffer())

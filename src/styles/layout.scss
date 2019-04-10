@@ -2,6 +2,11 @@
   display: flex;
 }
 
+@mixin flex-h-centered {
+  @include flex-h;
+  align-items: center;
+}
+
 @mixin flex-h-start {
   @include flex-h;
   align-items: flex-start;

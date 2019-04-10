@@ -6,6 +6,14 @@ body {
 h2 {
   margin: 0;
   padding: 0.5rem 0;
-  border-bottom: var(--border);
-  border-top: var(--border);
+  position: relative;
+  &::after {
+    content: '';
+    width: 3.3rem;
+    height: 0.3rem;
+    background: var(--font-color-default);
+    position: absolute;
+    left: 0;
+    top: 2.7rem;
+  }
 }

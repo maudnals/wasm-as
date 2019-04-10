@@ -27,13 +27,16 @@
       <div>
         <h2>Basic</h2>
         <div class="panel-body">
-          <input id="input1" type="number" />
-          <input id="input2" type="number" />
-          <div id="sumDiv"></div>
+          <div class="input-container">
+            <input id="input1" type="number" readonly />
+            <div id="operator">+</div>
+            <input id="input2" type="number" readonly />
+            <div>= <span id="sumDiv"></span></div>
+          </div>
         </div>
       </div>
       <div>
-        <h2>Image operations, with wasm memory</h2>
+        <h2>Image operations</h2>
         <div class="panel-body">
           <div>
             <img
