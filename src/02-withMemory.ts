@@ -1,4 +1,4 @@
-import loader from './node_modules/assemblyscript/lib/loader';
+import loader from '../node_modules/assemblyscript/lib/loader';
 
 fetch('optimized.0778a663.wasm')
   .then(bytes => bytes.arrayBuffer())
@@ -7,12 +7,12 @@ fetch('optimized.0778a663.wasm')
       env: {}
     });
 
-    const calcNums = new Int32Array([1, 2, 3, 4, 5, 0x7fffffff]);
+    const imageData = new Int32Array([1, 2, 3, 4, 5, 200]);
 
-    console.log('Input array data to be summed:', calcNums);
+    console.log('Input array data to be summed:', imageData);
 
     // the pointer points to the memory location in WASM context
-    const ptr = wasmModule.newArray(calcNums);
+    const ptr = wasmModule.newArray(imageData);
 
     console.log('ptr:', ptr);
     console.log('wasmModule:', wasmModule);
@@ -22,10 +22,10 @@ fetch('optimized.0778a663.wasm')
     wasmModule.sum(ptr);
 
     // make sure you provide the same TypedArray subclass constructor like in line 15
-    const expectedSummedArray = wasmModule.getArray(Int32Array, ptr);
+    const doubledArray = wasmModule.getArray(Int32Array, ptr);
 
     // directly access the processed array
-    console.log('expectedSummedInt32Array', expectedSummedArray);
+    console.log('doubledArray', doubledArray);
 
     // free memory in WASM context
     wasmModule.freeArray(ptr);

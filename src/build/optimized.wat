@@ -16,7 +16,7 @@
  (global $~lib/allocator/tlsf/ROOT (mut i32) (i32.const 0))
  (export "memory" (memory $0))
  (export "table" (table $0))
- (export "sum" (func $assembly/index/sum))
+ (export "sum" (func $src/assembly/doubleArray/sum))
  (export "memory.compare" (func $~lib/memory/memory.compare))
  (export "memory.allocate" (func $~lib/memory/memory.allocate))
  (export "memory.free" (func $~lib/memory/memory.free))
@@ -74,7 +74,7 @@
   local.get $2
   i32.store offset=8
  )
- (func $assembly/index/sum (; 3 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $src/assembly/doubleArray/sum (; 3 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -94,10 +94,8 @@
     local.get $0
     local.get $1
     call $~lib/internal/typedarray/TypedArray<i32>#__get
-    local.get $0
-    local.get $1
-    call $~lib/internal/typedarray/TypedArray<i32>#__get
-    i32.add
+    i32.const 1
+    i32.shl
     call $~lib/internal/typedarray/TypedArray<i32>#__set
     local.get $1
     i32.const 1
