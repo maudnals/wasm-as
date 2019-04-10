@@ -6,8 +6,8 @@
  (elem (i32.const 0) $null)
  (export "memory" (memory $0))
  (export "table" (table $0))
- (export "add" (func $assembly/2/add))
- (func $assembly/2/add (; 0 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (export "add" (func $assembly/add/add))
+ (func $assembly/add/add (; 0 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $0
   local.get $1
   i32.add
