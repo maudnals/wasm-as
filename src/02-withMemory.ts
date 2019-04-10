@@ -9,9 +9,9 @@ fetch('optimized.0778a663.wasm')
     });
 
     const arrData = getImgDataAsArray('img');
-
     // pointer to memory location (in WASM context)
     const ptr = wasmModule.newArray(new Int32Array(arrData));
+    // double all RGB values (separately but the operation is linear)
     wasmModule.sum(ptr);
     // access the processed array
     const doubledArray = wasmModule.getArray(Int32Array, ptr);

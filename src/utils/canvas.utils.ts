@@ -43,6 +43,13 @@ export const getImgFromArray = (arr, w, h) => {
 };
 
 export const displayImage = arr => {
-  const img = getImgFromArray(new Uint8ClampedArray(arr), 200, 200);
+  // arr is a flatten version of all rgba values ie *4
+  // .sqrt since img is supposed to be square
+  const imgDataLength = Math.sqrt(arr.length / 4);
+  const img = getImgFromArray(
+    new Uint8ClampedArray(arr),
+    imgDataLength,
+    imgDataLength
+  );
   document.body.appendChild(img);
 };
