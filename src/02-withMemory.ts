@@ -9,7 +9,7 @@ fetch('optimized.0778a663.wasm')
 
     const imageData = new Int32Array([1, 2, 3, 4, 5, 200]);
 
-    console.log('Input array data to be summed:', imageData);
+    console.log('Image data:', imageData);
 
     // the pointer points to the memory location in WASM context
     const ptr = wasmModule.newArray(imageData);
