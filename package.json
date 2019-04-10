@@ -6,7 +6,9 @@
   "scripts": {
     "asbuild:untouched": "asc assembly/index.ts -b build/untouched.wasm -t build/untouched.wat --sourceMap --validate --debug",
     "asbuild:optimized": "asc assembly/index.ts -b build/optimized.wasm -t build/optimized.wat --sourceMap --validate --optimize",
-    "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized",
+    "asbuild:untouched2": "asc assembly/2.ts -b build/untouched2.wasm -t build/untouched2.wat --sourceMap --validate --debug",
+    "asbuild:optimized2": "asc assembly/2.ts -b build/optimized2.wasm -t build/optimized2.wat --sourceMap --validate --optimize",
+    "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized && npm run asbuild:untouched2  && npm run asbuild:optimized2",
     "watch": "watch 'npm run asbuild' ./assembly",
     "start": "npm run watch & parcel index.html"
   },
