@@ -42,7 +42,7 @@ export const getImgFromArray = (arr, w, h) => {
   return getImgFromDataUrl(getDataUrlFromArray(arr, w, h));
 };
 
-export const displayImage = arr => {
+export const displayImage = (arr, el) => {
   // arr is a flatten version of all rgba values ie *4
   // .sqrt since img is supposed to be square
   const imgDataLength = Math.sqrt(arr.length / 4);
@@ -51,5 +51,5 @@ export const displayImage = arr => {
     imgDataLength,
     imgDataLength
   );
-  document.body.appendChild(img);
+  el.appendChild(img);
 };

@@ -1,5 +1,6 @@
 import loader from '../node_modules/assemblyscript/lib/loader';
 import { displayImage, getImgDataAsArray } from './utils/canvas.utils';
+import { editedImageWrapperEl } from './utils/html.utils';
 
 fetch('optimized.0778a663.wasm')
   .then(bytes => bytes.arrayBuffer())
@@ -18,7 +19,7 @@ fetch('optimized.0778a663.wasm')
     // free memory in WASM context
     wasmModule.freeArray(ptr);
 
-    displayImage(new Uint8ClampedArray(doubledArray));
+    displayImage(new Uint8ClampedArray(doubledArray), editedImageWrapperEl);
 
     console.log('ptr:', ptr);
     console.log('wasmModule:', wasmModule);

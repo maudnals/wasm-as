@@ -1,0 +1,56 @@
+@import './variables.scss';
+@import './typography.scss';
+@import './utils-layout.scss';
+
+body {
+  background: var(--background-default);
+  color: var(--font-color-default);
+  width: 100vw;
+  height: 100vh;
+  padding: 0.8rem;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+// .header {
+//   height: var(--header-height);
+//   @include flex-h-start;
+//   .logo {
+//     margin-right: 0.4rem;
+//     @include flex-h-start;
+//   }
+// }
+
+.panels {
+  @include flex-h;
+  height: 100%;
+  > div {
+    @include flex(1);
+    padding: 0 0.4rem;
+    border-right: var(--border);
+    border-bottom: var(--border);
+    .panel-body {
+      margin: 1rem 0;
+      border: none;
+    }
+  }
+  div:first-child {
+    border-left: var(--border);
+  }
+  input {
+    resize: none;
+    width: calc(100% - 2rem);
+    color: inherit;
+    font-family: inherit;
+    border: none;
+    font-size: 1rem;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    background: var(--background-medium);
+    transition: background-color $transition;
+    &:focus {
+      background: var(--background-light);
+      outline: none;
+    }
+  }
+}
