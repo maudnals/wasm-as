@@ -33,7 +33,7 @@
  (global $~lib/memory/HEAP_BASE i32 (i32.const 116))
  (export "memory" (memory $0))
  (export "table" (table $0))
- (export "sum" (func $src/assembly/doubleArray/sum))
+ (export "sum" (func $src/wasm/src/doubleArray/sum))
  (export "memory.compare" (func $~lib/memory/memory.compare))
  (export "memory.allocate" (func $~lib/memory/memory.allocate))
  (export "memory.free" (func $~lib/memory/memory.free))
@@ -55,7 +55,7 @@
    unreachable
   end
  )
- (func $start:src/assembly/doubleArray (; 2 ;) (type $FUNCSIG$v)
+ (func $start:src/wasm/src/doubleArray (; 2 ;) (type $FUNCSIG$v)
   call $start:~lib/allocator/tlsf
  )
  (func $~lib/internal/typedarray/TypedArray<i32>#__get (; 3 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
@@ -136,7 +136,7 @@
    i32.store offset=8
   end
  )
- (func $src/assembly/doubleArray/sum (; 5 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $src/wasm/src/doubleArray/sum (; 5 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -1662,7 +1662,7 @@
   return
  )
  (func $start (; 31 ;) (type $FUNCSIG$v)
-  call $start:src/assembly/doubleArray
+  call $start:src/wasm/src/doubleArray
  )
  (func $null (; 32 ;) (type $FUNCSIG$v)
  )
