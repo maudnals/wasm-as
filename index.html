@@ -27,10 +27,14 @@
       <div>
         <h2>Basic</h2>
         <div class="panel-body">
-          <div class="input-container">
-            <input id="input1" type="number" readonly />
+          <div class="inputs-container">
+            <div>
+              <input id="input1" type="number" readonly />
+            </div>
             <div id="operator">+</div>
-            <input id="input2" type="number" readonly />
+            <div>
+              <input id="input2" type="number" readonly />
+            </div>
             <div>= <span id="sumDiv"></span></div>
           </div>
         </div>
@@ -38,14 +42,19 @@
       <div>
         <h2>Image operations</h2>
         <div class="panel-body">
-          <div>
-            <img
-              id="img"
-              src="src/assets/symbiosis-shark-pilot-fish.jpg"
-              alt=""
-            />
+          <div class="images-container">
+            <div>
+              <img
+                id="img"
+                src="src/assets/symbiosis-shark-pilot-fish.jpg"
+                alt=""
+              />
+            </div>
+            <div>
+              ➝
+            </div>
+            <div id="editedImageWrapper"></div>
           </div>
-          <div id="editedImageWrapper"></div>
         </div>
       </div>
     </div>

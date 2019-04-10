@@ -7,7 +7,7 @@ body {
   color: var(--font-color-default);
   width: 100vw;
   height: 100vh;
-  padding: 0.8rem;
+  padding: 2rem;
   margin: 0;
   box-sizing: border-box;
 }
@@ -23,19 +23,17 @@ body {
       border: none;
     }
   }
-  div:first-child {
-    border-left: var(--border);
-  }
-  .input-container {
+  .inputs-container,
+  .images-container {
     @include flex-h-centered;
-    --margin-right: 0.4rem;
-    #operator {
-      margin-right: var(--margin-right);
+    > div {
+      margin-right: 1rem;
     }
+  }
+  .inputs-container {
     input {
       resize: none;
       width: 6rem;
-      margin-right: var(--margin-right);
       color: inherit;
       font-family: inherit;
       border: none;
