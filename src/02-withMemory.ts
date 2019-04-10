@@ -1,9 +1,5 @@
 import loader from '../node_modules/assemblyscript/lib/loader';
-import {
-  canvasToCanvasData,
-  drawImgOnCanvas,
-  getImgFromArray
-} from './utils/canvas.utils';
+import { getImgFromArray, getImgDataAsArray } from './utils/canvas.utils';
 
 fetch('optimized.0778a663.wasm')
   .then(bytes => bytes.arrayBuffer())
@@ -12,13 +8,10 @@ fetch('optimized.0778a663.wasm')
       env: {}
     });
 
-    const img = document.getElementById('img');
-    const canvas = drawImgOnCanvas(img);
-    const arrData = canvasToCanvasData(canvas);
+    const arrData = getImgDataAsArray('img');
 
     // pointer to memory location (in WASM context)
     const ptr = wasmModule.newArray(new Int32Array(arrData));
-
     wasmModule.sum(ptr);
     const doubledArray = wasmModule.getArray(Int32Array, ptr);
 
@@ -27,6 +20,7 @@ fetch('optimized.0778a663.wasm')
     document.body.appendChild(img2);
     // free memory in WASM context
     wasmModule.freeArray(ptr);
+
     console.log('ptr:', ptr);
     console.log('wasmModule:', wasmModule);
     console.log('wasmModule.memory:', wasmModule.memory);

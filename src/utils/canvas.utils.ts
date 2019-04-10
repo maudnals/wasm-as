@@ -12,6 +12,12 @@ export const drawImgOnCanvas = img => {
 export const canvasToCanvasData = canvas =>
   canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data;
 
+export const getImgDataAsArray = imgElId => {
+  const img = document.getElementById(imgElId);
+  const canvas = drawImgOnCanvas(img);
+  return canvasToCanvasData(canvas);
+};
+
 const getDataUrlFromArray = (arr, w, h) => {
   if (typeof w === 'undefined' || typeof h === 'undefined') {
     w = h = Math.sqrt(arr.length / 4);
