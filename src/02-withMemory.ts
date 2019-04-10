@@ -1,4 +1,9 @@
 import loader from '../node_modules/assemblyscript/lib/loader';
+import {
+  canvasToCanvasData,
+  drawImgOnCanvas,
+  getImgFromArray
+} from './utils/canvas.utils';
 
 fetch('optimized.0778a663.wasm')
   .then(bytes => bytes.arrayBuffer())
@@ -7,26 +12,25 @@ fetch('optimized.0778a663.wasm')
       env: {}
     });
 
-    const imageData = new Int32Array([1, 2, 3, 4, 5, 200]);
+    const img = document.getElementById('img');
+    const canvas = drawImgOnCanvas(img);
+    const arrData = canvasToCanvasData(canvas);
 
-    console.log('Image data:', imageData);
+    // pointer to memory location (in WASM context)
+    const ptr = wasmModule.newArray(new Int32Array(arrData));
 
-    // the pointer points to the memory location in WASM context
-    const ptr = wasmModule.newArray(imageData);
-
-    console.log('ptr:', ptr);
-    console.log('wasmModule:', wasmModule);
-    console.log('wasmModule.memory:', wasmModule.memory);
-
-    // call the WASM module to execute the processing
     wasmModule.sum(ptr);
-
-    // make sure you provide the same TypedArray subclass constructor like in line 15
     const doubledArray = wasmModule.getArray(Int32Array, ptr);
 
     // directly access the processed array
-    console.log('doubledArray', doubledArray);
-
+    const img2 = getImgFromArray(new Uint8ClampedArray(doubledArray), 200, 200);
+    document.body.appendChild(img2);
     // free memory in WASM context
     wasmModule.freeArray(ptr);
+    console.log('ptr:', ptr);
+    console.log('wasmModule:', wasmModule);
+    console.log('wasmModule.memory:', wasmModule.memory);
+    console.log(img2);
+    console.log('doubledArray', doubledArray);
+    console.log('doubledArray converted', new Uint8ClampedArray(doubledArray));
   });
