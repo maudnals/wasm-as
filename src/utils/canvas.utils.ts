@@ -1,11 +1,18 @@
 export const imgToCanvasData = img => canvasToCanvasData(drawImgOnCanvas(img));
 
 const drawImgOnCanvas = img => {
-  const canvas = document.createElement('canvas');
-  canvas.id = 'canvas';
-  canvas.width = img.width;
-  canvas.height = img.height;
+  const canvas = createCanvas(img.width, img.height, 'canvas');
   canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
+  return canvas;
+};
+
+const createCanvas = (w, h, id = null) => {
+  const canvas = document.createElement('canvas');
+  if (id) {
+    canvas.id === id;
+  }
+  canvas.width = w;
+  canvas.height = h;
   return canvas;
 };
 
@@ -22,10 +29,8 @@ const getDataUrlFromArray = (arr, w, h) => {
   if (typeof w === 'undefined' || typeof h === 'undefined') {
     w = h = Math.sqrt(arr.length / 4);
   }
-  const canvas = document.createElement('canvas');
+  const canvas = createCanvas(w, h);
   const ctx = canvas.getContext('2d');
-  canvas.width = w;
-  canvas.height = h;
   const imgData = ctx.createImageData(w, h);
   imgData.data.set(arr);
   ctx.putImageData(imgData, 0, 0);
