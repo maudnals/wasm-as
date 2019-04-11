@@ -6,11 +6,9 @@
     "typescript": "^3.4.1"
   },
   "scripts": {
-    "asbuild:untouched": "asc src/wasm/src/doubleArray.ts -b src/wasm/build/untouched.wasm -t src/wasm/build/untouched.wat --sourceMap --validate --debug",
-    "asbuild:optimized": "asc src/wasm/src/doubleArray.ts -b src/wasm/build/optimized.wasm -t src/wasm/build/optimized.wat --sourceMap --validate --optimize",
-    "asbuild:untouched2": "asc src/wasm/src/add.ts -b src/wasm/build/untouched2.wasm -t src/wasm/build/untouched2.wat --sourceMap --validate --debug",
-    "asbuild:optimized2": "asc src/wasm/src/add.ts -b src/wasm/build/optimized2.wasm -t src/wasm/build/optimized2.wat --sourceMap --validate --optimize",
-    "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized && npm run asbuild:untouched2  && npm run asbuild:optimized2",
+    "asbuild:optimized-add": "asc src/wasm/src/add.ts -b src/wasm/build/add.wasm -t src/wasm/build/add.wat --sourceMap --validate --optimize",
+    "asbuild:optimized-double-array": "asc src/wasm/src/doubleArray.ts -b src/wasm/build/doubleArray.wasm -t src/wasm/build/doubleArray.wat --sourceMap --validate --optimize",
+    "asbuild": "npm run asbuild:optimized-add && npm run asbuild:optimized-double-array",
     "watch": "watch 'npm run asbuild' ./src/wasm/src",
     "start": "npm run watch & parcel index.html",
     "l": "loop asbuild:untouched"

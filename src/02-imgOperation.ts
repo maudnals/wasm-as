@@ -2,7 +2,7 @@ import loader from '../node_modules/assemblyscript/lib/loader';
 import { displayImage, getImgDataAsArray } from './utils/canvas.utils';
 import { editedImageWrapperEl } from './utils/dom.utils';
 
-fetch('optimized.0778a663.wasm')
+fetch('doubleArray.0aceb6d0.wasm')
   .then(bytes => bytes.arrayBuffer())
   .then(buffer => {
     const wasmModule = loader.instantiateBuffer(<Uint8Array>buffer, {
