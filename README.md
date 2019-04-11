@@ -1,4 +1,4 @@
-# wasm-threads-asm
+# wasm-as
 AssemblyScript demo, basic + with memory.
 
 # Start   
