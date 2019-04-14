@@ -1,7 +1,12 @@
 // HTML Elements
 
-export const input1: HTMLInputElement = document.getElementById('input1');
-export const input2: HTMLInputElement = document.getElementById('input2');
+export const input1: HTMLInputElement = <HTMLInputElement>(
+  document.getElementById('input1')
+);
+export const input2: HTMLInputElement = <HTMLInputElement>(
+  document.getElementById('input2')
+);
+
 export const setInput1Value = (value: number) =>
   (input1.value = <string>(<unknown>value));
 export const setInput2Value = (value: number) =>

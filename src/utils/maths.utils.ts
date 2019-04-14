@@ -1,1 +1,1 @@
-export const getRandom1To10 = () => Math.floor(Math.random() * 10);
+export const getRandom0To9 = (): number => Math.floor(Math.random() * 10);
