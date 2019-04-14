@@ -16,18 +16,18 @@ const drawImgOnCanvas = (img: HTMLImageElement): HTMLCanvasElement => {
   return canvas;
 };
 
+const getImgSize = (imgDataArr: Uint8ClampedArray) =>
+  Math.sqrt(imgDataArr.length / 4);
+// only OK for a square image
+
 export const displayImage = (
-  arr: Uint8ClampedArray,
+  imgDataArr: Uint8ClampedArray,
   mountEl: HTMLElement
 ): void => {
-  // arr is a flatten version of all rgba values ie *4
+  // arr is a flattened version of all rgba values ie *4
   // .sqrt since img is supposed to be square
-  const imgDataLength = Math.sqrt(arr.length / 4);
-  const img = getImgFromArray(
-    new Uint8ClampedArray(arr),
-    imgDataLength,
-    imgDataLength
-  );
+  const size = getImgSize(imgDataArr);
+  const img = getImgFromArray(new Uint8ClampedArray(imgDataArr), size, size);
   mountEl.appendChild(img);
 };
 
@@ -36,7 +36,7 @@ export const displayImage = (
 const canvasToCanvasData = (canvas: HTMLCanvasElement) =>
   canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data;
 
-export const getImgDataAsArray = (imgElId: string): Uint8ClampedArray => {
+export const getImgDataArray = (imgElId: string): Uint8ClampedArray => {
   const img: HTMLImageElement = <HTMLImageElement>(
     document.getElementById(imgElId)
   );
@@ -44,10 +44,7 @@ export const getImgDataAsArray = (imgElId: string): Uint8ClampedArray => {
   return canvasToCanvasData(canvas);
 };
 
-const getDataURLFromArray = (arr, w, h) => {
-  if (typeof w === 'undefined' || typeof h === 'undefined') {
-    w = h = Math.sqrt(arr.length / 4);
-  }
+const getDataURLFromArray = (arr, w: number, h: number) => {
   // create canvas and fill it with image data
   const canvas = createCanvas(w, h);
   const ctx = canvas.getContext('2d');
@@ -64,6 +61,10 @@ const getImgFromDataURL = data => {
   return img;
 };
 
-export const getImgFromArray = (arr, w, h) => {
+export const getImgFromArray = (
+  arr: Uint8ClampedArray,
+  w: number,
+  h: number
+) => {
   return getImgFromDataURL(getDataURLFromArray(arr, w, h));
 };

@@ -1,5 +1,5 @@
-import loader from '../node_modules/assemblyscript/lib/loader';
-import { displayImage, getImgDataAsArray } from './utils/canvas.utils';
+import loader from 'assemblyscript/lib/loader';
+import { displayImage, getImgDataArray } from './utils/canvas.utils';
 import { editedImageWrapperEl } from './utils/dom.utils';
 
 fetch('doubleArray.0aceb6d0.wasm')
@@ -9,7 +9,8 @@ fetch('doubleArray.0aceb6d0.wasm')
       env: {}
     });
 
-    const arrData = getImgDataAsArray('img');
+    const arrData = getImgDataArray('img');
+    console.log(arrData);
 
     // pointer to memory location (in WASM context)
     const ptr = wasmModule.newArray(new Int32Array(arrData));
