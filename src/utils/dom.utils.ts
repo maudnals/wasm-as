@@ -1,4 +1,5 @@
-// HTML Elements
+/* DOM utils:
+HTML Elements getters and setters */
 
 export const input1: HTMLInputElement = <HTMLInputElement>(
   document.getElementById('input1')
