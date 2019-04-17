@@ -1,5 +1,10 @@
 import loader from 'assemblyscript/lib/loader';
-import { displayImg, getImgDataArray } from './utils/canvas.utils';
+import {
+  displayImg,
+  getImgDataArray,
+  toUint8ClampedArr,
+  toInt32Arr
+} from './utils/img.utils';
 import { newImgWrapperEl, btn } from './utils/dom.utils';
 
 btn.addEventListener('click', () => {
@@ -11,21 +16,19 @@ btn.addEventListener('click', () => {
         env: {}
       });
       // no need for RGB distinction since *2 is linear
-      const doubledImgData = new Uint8ClampedArray(
-        doubleArrayData(wasmModule, imgArrData)
+      const doubledImgData = toUint8ClampedArr(
+        doubleArrayData(wasmModule, toInt32Arr(imgArrData))
       );
       displayImg(doubledImgData, newImgWrapperEl);
-      // console.log(arrData);
       // console.log('ptr:', ptr);
       // console.log('wasmModule:', wasmModule);
-      // console.log('wasmModule.memory:', wasmModule.memory);
       // console.log('doubledArray:', doubledArray);
     });
 });
 
-export function doubleArrayData(wasmModule, imgArrData: Uint8ClampedArray) {
+export function doubleArrayData(wasmModule, imgArrData: Int32Array) {
   // pointer to memory location (in WASM context)
-  const ptr = wasmModule.newArray(new Int32Array(imgArrData));
+  const ptr = wasmModule.newArray(imgArrData);
   // double all values
   wasmModule.sum(ptr);
   // access the processed array

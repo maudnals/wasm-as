@@ -1,5 +1,5 @@
 import loader from 'assemblyscript/lib/loader';
-import { getImgDataArray } from './utils/canvas.utils';
+import { getImgDataArray } from './utils/img.utils';
 import benchmark from './utils/benchmark.utils';
 import { doubleArrayData } from './02-imgOperation';
 

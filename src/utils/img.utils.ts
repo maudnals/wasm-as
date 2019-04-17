@@ -61,6 +61,9 @@ const getImgFromDataURL = data => {
   return img;
 };
 
+export const toUint8ClampedArr = data => new Uint8ClampedArray(data);
+export const toInt32Arr = data => new Int32Array(data);
+
 export const getImgFromArray = (
   arr: Uint8ClampedArray,
   w: number,
