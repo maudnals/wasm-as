@@ -16,7 +16,7 @@
  (global $~lib/allocator/tlsf/ROOT (mut i32) (i32.const 0))
  (export "memory" (memory $0))
  (export "table" (table $0))
- (export "sum" (func $src/wasm/src/doubleArray/sum))
+ (export "doubleArray" (func $src/wasm/src/doubleArray/doubleArray))
  (export "memory.compare" (func $~lib/memory/memory.compare))
  (export "memory.allocate" (func $~lib/memory/memory.allocate))
  (export "memory.free" (func $~lib/memory/memory.free))
@@ -74,7 +74,7 @@
   local.get $2
   i32.store offset=8
  )
- (func $src/wasm/src/doubleArray/sum (; 3 ;) (type $FUNCSIG$vi) (param $0 i32)
+ (func $src/wasm/src/doubleArray/doubleArray (; 3 ;) (type $FUNCSIG$vi) (param $0 i32)
   (local $1 i32)
   (local $2 i32)
   block $break|0

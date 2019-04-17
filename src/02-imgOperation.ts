@@ -8,7 +8,7 @@ import {
 import { newImgWrapperEl, btn } from './utils/dom.utils';
 
 btn.addEventListener('click', () => {
-  fetch('doubleArray.0aceb6d0.wasm')
+  fetch('doubleArray.a508c801.wasm')
     .then(bytes => bytes.arrayBuffer())
     .then(buffer => {
       const imgArrData = getImgDataArray('img');
@@ -30,7 +30,7 @@ export function doubleArrayData(wasmModule, imgArrData: Int32Array) {
   // pointer to memory location (in WASM context)
   const ptr = wasmModule.newArray(imgArrData);
   // double all values
-  wasmModule.sum(ptr);
+  wasmModule.doubleArray(ptr);
   // access the processed array
   const doubledArray = wasmModule.getArray(Int32Array, ptr);
   // free memory in WASM context
