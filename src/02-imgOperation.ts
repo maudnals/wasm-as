@@ -6,26 +6,31 @@ btn.addEventListener('click', () => {
   fetch('doubleArray.0aceb6d0.wasm')
     .then(bytes => bytes.arrayBuffer())
     .then(buffer => {
-      const arrData = getImgDataArray('img');
-
+      const imgArrData = getImgDataArray('img');
       const wasmModule = loader.instantiateBuffer(<Uint8Array>buffer, {
         env: {}
       });
-      // pointer to memory location (in WASM context)
-      const ptr = wasmModule.newArray(new Int32Array(arrData));
-      // double all RGB values (separately but the operation is linear)
-      wasmModule.sum(ptr);
-      // access the processed array
-      const doubledArray = wasmModule.getArray(Int32Array, ptr);
-      // free memory in WASM context
-      wasmModule.freeArray(ptr);
-
-      displayImage(new Uint8ClampedArray(doubledArray), newImgWrapperEl);
-
-      console.log(arrData);
-      console.log('ptr:', ptr);
-      console.log('wasmModule:', wasmModule);
-      console.log('wasmModule.memory:', wasmModule.memory);
-      console.log('doubledArray:', doubledArray);
+      // no need for RGB distinction since *2 is linear
+      const doubledImgData = new Uint8ClampedArray(
+        doubleArrayData(wasmModule, imgArrData)
+      );
+      displayImage(doubledImgData, newImgWrapperEl);
+      // console.log(arrData);
+      // console.log('ptr:', ptr);
+      // console.log('wasmModule:', wasmModule);
+      // console.log('wasmModule.memory:', wasmModule.memory);
+      // console.log('doubledArray:', doubledArray);
     });
 });
+
+export function doubleArrayData(wasmModule, imgArrData: Uint8ClampedArray) {
+  // pointer to memory location (in WASM context)
+  const ptr = wasmModule.newArray(new Int32Array(imgArrData));
+  // double all values
+  wasmModule.sum(ptr);
+  // access the processed array
+  const doubledArray = wasmModule.getArray(Int32Array, ptr);
+  // free memory in WASM context
+  wasmModule.freeArray(ptr);
+  return doubledArray;
+}
