@@ -1,12 +1,12 @@
 (module
  (type $FUNCSIG$viiii (func (param i32 i32 i32 i32)))
  (type $FUNCSIG$v (func))
- (type $FUNCSIG$ii (func (param i32) (result i32)))
+ (type $FUNCSIG$vi (func (param i32)))
  (type $FUNCSIG$iii (func (param i32 i32) (result i32)))
  (type $FUNCSIG$viii (func (param i32 i32 i32)))
  (type $FUNCSIG$iiii (func (param i32 i32 i32) (result i32)))
+ (type $FUNCSIG$ii (func (param i32) (result i32)))
  (type $FUNCSIG$vii (func (param i32 i32)))
- (type $FUNCSIG$vi (func (param i32)))
  (import "env" "abort" (func $~lib/env/abort (param i32 i32 i32 i32)))
  (memory $0 1)
  (data (i32.const 8) "\16\00\00\00~\00l\00i\00b\00/\00a\00l\00l\00o\00c\00a\00t\00o\00r\00/\00t\00l\00s\00f\00.\00t\00s")
@@ -74,19 +74,18 @@
   local.get $2
   i32.store offset=8
  )
- (func $src/wasm/src/doubleArray/sum (; 3 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $src/wasm/src/doubleArray/sum (; 3 ;) (type $FUNCSIG$vi) (param $0 i32)
   (local $1 i32)
   (local $2 i32)
-  (local $3 i32)
-  local.get $0
-  i32.load offset=8
-  i32.const 2
-  i32.shr_u
-  local.set $3
-  loop $repeat|0
-   block $break|0
+  block $break|0
+   local.get $0
+   i32.load offset=8
+   i32.const 2
+   i32.shr_u
+   local.set $2
+   loop $repeat|0
     local.get $1
-    local.get $3
+    local.get $2
     i32.ge_s
     br_if $break|0
     local.get $0
@@ -102,9 +101,10 @@
     i32.add
     local.set $1
     br $repeat|0
+    unreachable
    end
+   unreachable
   end
-  local.get $2
  )
  (func $~lib/internal/memory/memcmp (; 4 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   (local $3 i32)
