@@ -10,7 +10,7 @@
     "asbuild:optimized-double-array": "asc src/wasm/src/doubleArray.ts -b src/wasm/build/doubleArray.wasm -t src/wasm/build/doubleArray.wat --sourceMap --validate --optimize",
     "asbuild": "npm run asbuild:optimized-add && npm run asbuild:optimized-double-array",
     "watch": "watch 'npm run asbuild' ./src/wasm/src",
-    "start": "npm run watch & parcel index.html"
+    "start": "npm run watch & parcel src/index.html"
   },
   "dependencies": {
     "watch": "^1.0.2"
