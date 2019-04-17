@@ -1,5 +1,5 @@
 import loader from 'assemblyscript/lib/loader';
-import { displayImage, getImgDataArray } from './utils/canvas.utils';
+import { displayImg, getImgDataArray } from './utils/canvas.utils';
 import { newImgWrapperEl, btn } from './utils/dom.utils';
 
 btn.addEventListener('click', () => {
@@ -14,7 +14,7 @@ btn.addEventListener('click', () => {
       const doubledImgData = new Uint8ClampedArray(
         doubleArrayData(wasmModule, imgArrData)
       );
-      displayImage(doubledImgData, newImgWrapperEl);
+      displayImg(doubledImgData, newImgWrapperEl);
       // console.log(arrData);
       // console.log('ptr:', ptr);
       // console.log('wasmModule:', wasmModule);

@@ -18,7 +18,7 @@ export const getInput2Value = (): string => input2.value;
 export const sumDivEl: HTMLElement = document.getElementById('sumDiv');
 
 export const newImgWrapperEl: HTMLElement = document.getElementById(
-  'editedImageWrapper'
+  'newImgWrapper'
 );
 export const btn: HTMLElement = document.getElementById('btn');
 

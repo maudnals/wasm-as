@@ -20,7 +20,7 @@ const getImgSize = (imgDataArr: Uint8ClampedArray) =>
   Math.sqrt(imgDataArr.length / 4);
 // only OK for a square image
 
-export const displayImage = (
+export const displayImg = (
   imgDataArr: Uint8ClampedArray,
   mountEl: HTMLElement
 ): void => {

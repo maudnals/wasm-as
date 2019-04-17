@@ -26,7 +26,7 @@ body {
     }
   }
   .inputs-container,
-  .images-container {
+  .imgs-container {
     @include flex-h-centered;
     > div {
       margin-right: 1rem;
