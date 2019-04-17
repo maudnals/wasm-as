@@ -1,0 +1,16 @@
+@import './variables.scss';
+
+button {
+  background: #0064ef;
+  transition: background $transition;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 3px;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+  &:hover {
+    background: #0051c4;
+  }
+}
