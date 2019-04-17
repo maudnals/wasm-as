@@ -13,13 +13,15 @@ body {
 }
 
 .panels {
-  @include flex-h;
   height: 100%;
   > div {
     @include flex(1);
     padding: 0 0.4rem;
+    h2 {
+      margin-bottom: 2rem;
+    }
     .panel-body {
-      margin: 3rem 0;
+      margin: 1rem 0 5rem 0;
       border: none;
     }
   }
@@ -46,5 +48,11 @@ body {
         outline: none;
       }
     }
+  }
+}
+
+@media (min-width: 950px) {
+  .panels {
+    @include flex-h;
   }
 }
