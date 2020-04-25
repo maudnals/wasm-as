@@ -6,5 +6,3 @@ AssemblyScript demo, basic + with memory.
 * `npm install`  
 * `npm start`  
 
-# Explore
-
